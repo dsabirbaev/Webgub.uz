@@ -30,7 +30,9 @@ const index = () => {
             <div className="container">
                 <div className="flex flex-col gap-y-[72px]">
                     <div className="bg-factor flex items-center gap-x-[146px]">
+                      
                         <img src={phone} alt="phone" className="object-contain" />
+                 
 
                         <div>
                             <h2 className="mb-[52px] text-[#1D1D45] w-[775px] text-[45px] leading-[60px] font-['RowdiesBold']">The number one factor in <span className="text-[#2AAA94]">relevance drives out resistance.</span></h2>
