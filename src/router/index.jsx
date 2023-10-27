@@ -3,20 +3,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
-import {lazy} from "react";
 
-const Layout = lazy(() => import("../pages/Layout"));
-const Home = lazy(() => import("../pages/Home"));
-const Login = lazy(() => import("../pages/Login"));
-const Error = lazy(() => import("../pages/Error"));
+import Layout from "../pages/Layout";
+import Home from "../pages/Home";
 
-const Dashboard = lazy(() => import("../pages/Dashboard"));
-const DashboardHome = lazy(() => import("../pages/Dashboard/DashboardHome"));
+import Login from "../pages/Login";
+import Error from "../pages/Error";
+
+import Dashboard from "../pages/Dashboard";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
 
 import Students from "../pages/Students";
 import Courses from "../pages/Courses";
 import Customers from "../pages/Customers";
 import Services from "../pages/Services";
+
 const router = createBrowserRouter([
     {
         path: "/",

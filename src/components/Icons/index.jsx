@@ -3,4 +3,5 @@
 
 import Play from "./Play";
 import Pause from "./Pause";
-export {Play, Pause};
+import Search from "./Search";
+export {Play, Pause, Search};
