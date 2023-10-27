@@ -10,4 +10,5 @@ import Courses from "./Courses";
 import Customers from "./Customers";
 import Services from "./Services";
 import Student from "./Student";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student};
+import Plus from "./Plus";
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus};

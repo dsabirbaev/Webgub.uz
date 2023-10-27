@@ -1,12 +1,19 @@
 
 
 
-
+import BreadCrumb from "../../components/UI/BreadCrumb";
 
 const index = () => {
     return (
-        <div>
-            students
+        <div className="flex flex-col gap-y-5">
+            <div className="rounded-md bg-white p-4">
+                <span className="font-['SairaSemiBold'] text-blue-600"> O'quvchilar</span>
+                <BreadCrumb text={"O'quvchilar"}/>
+            </div>
+
+            <div className="rounded-md bg-white p-4">
+                dd
+            </div>
         </div>
     );
 };
