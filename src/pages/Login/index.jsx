@@ -1,13 +1,34 @@
 
+
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input } from 'antd';
 import logo from "../../assets/icons/logo.svg";
 
-
+import userAPI from '../../service/user/userAPI';
 
 const index = () => {
+
+    const navigate = useNavigate();
     const onFinish = (values) => {
         // console.log('Success:', values.parol);
-        const user = {username: values.username, parol: values.parol};
+        const user = {username: values.username, password: values.parol};
+
+        userAPI.login(user).then((res) => {
+            console.log(user)
+            console.log(res)
+            // localStorage.setItem("token", res?.data?.token);
+            // localStorage.setItem("user", res?.data?.user?.first_name);
+            // localStorage.setItem("my_id", res.data?.user?.id);
+            if(res.status === 200){
+
+                navigate("/dashboard");
+                
+            }
+            
+        }).catch((err) => {
+            console.log(err.message);
+           
+        })
     };
 
 
