@@ -4,4 +4,5 @@
 import DashboardCard from "./DashboardCard";
 import ServiceCard from "./ServiceCard";
 import CategoryCard from "./CategoryCard";
-export {DashboardCard, ServiceCard, CategoryCard};
+import OurCourseCard from "./OurCourseCard";
+export {DashboardCard, ServiceCard, CategoryCard, OurCourseCard};
