@@ -29,7 +29,7 @@ const index = () => {
         }
     ];
     return (
-        <header className="shadow-lg">
+        <header>
             <div className="container">
                 <nav className="flex justify-between items-center h-[120px]">
                     <NavLink to="/"><img src={logo} alt="logo" /></NavLink>

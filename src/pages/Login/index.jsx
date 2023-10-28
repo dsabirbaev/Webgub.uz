@@ -21,7 +21,7 @@ const index = () => {
                 
                 localStorage.setItem("token", res?.data?.token);
                 localStorage.setItem("fullName", res?.data?.admin?.fullName);
-                localStorage.setItem("my_id", res?.data?.admin?._id);
+            
 
                 if(res.status === 200 && localStorage.getItem("token")){
                 
