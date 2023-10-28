@@ -61,6 +61,13 @@ body {
 }
 
 
+@font-face {
+  font-family: RevaliaRegular;
+  src: url(./assets/fonts/Revalia-Regular.ttf);
+}
+
+
+
 .ant-message-notice-content {
   transform: scale(1.5);
   margin-top: 40px;

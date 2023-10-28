@@ -28,6 +28,8 @@ const index = () => {
             key: '1',
         }
     ];
+
+    document.title = "Webhub.uz"
     return (
         <header>
             <div className="container">

@@ -13,4 +13,7 @@ import Student from "./Student";
 import Plus from "./Plus";
 import Menu from "./Menu";
 import Admin from "./Admin";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin};
+import Phone from "./Phone";
+import  Message  from "./Message";
+import Map from "./Map";
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map};
