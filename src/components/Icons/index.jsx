@@ -16,4 +16,5 @@ import Admin from "./Admin";
 import Phone from "./Phone";
 import  Message  from "./Message";
 import Map from "./Map";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map};
+import Cart from "./Cart";
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map, Cart};

@@ -42,6 +42,12 @@ body {
   src: url(./assets/fonts/Saira-SemiBold.ttf);
 }
 
+@font-face {
+  font-family: SairaBold;
+  src: url(./assets/fonts/Saira-Bold.ttf);
+}
+
+
 
 @font-face {
   font-family: RowdiesRegular;

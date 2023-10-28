@@ -19,8 +19,8 @@ const index = () => {
 
     const getAdmin = async() => {
         const response = await userAPI.getMe();
-        const res = await response.data;
-        setInfo(res);
+        const result = await response.data;
+        setInfo(result);
     }
     console.log(info?.admin?.fullName)
     useEffect(() => {
