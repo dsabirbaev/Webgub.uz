@@ -41,7 +41,7 @@ const index = () => {
                         </div>
                     </div>
 
-                    <div className="relative bg-red-300 rounded-[68px]">
+                    <div className="relative  rounded-[68px]">
                         <span  onClick={() => handlePlayClick()} className="absolute right-10 top-10 cursor-pointer z-10">
                              { play ? <Pause/> : <Play/> }
                         </span>

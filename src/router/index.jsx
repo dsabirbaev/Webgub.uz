@@ -17,7 +17,7 @@ import Students from "../pages/Students";
 import Courses from "../pages/Courses";
 import Customers from "../pages/Customers";
 import Services from "../pages/Services";
-
+import Settings from "../pages/Settings";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -51,6 +51,10 @@ const router = createBrowserRouter([
                     {
                         path: "/dashboard/services",
                         element: <Services/>
+                    },
+                    {
+                        path: "/dashboard/settings",
+                        element: <Settings/>
                     },
 
                 ]

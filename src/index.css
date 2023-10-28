@@ -59,3 +59,9 @@ body {
   font-family: InterMedium;
   src: url(./assets/fonts/Inter-Medium.ttf);
 }
+
+
+.ant-message-notice-content {
+  transform: scale(1.5);
+  margin-top: 40px;
+}

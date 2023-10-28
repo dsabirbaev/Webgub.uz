@@ -1,7 +1,7 @@
 
-
-import { Link, useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Checkbox, Form, Input, message } from 'antd';
 import logo from "../../assets/icons/logo.svg";
 
 import userAPI from '../../service/user/userAPI';
@@ -9,26 +9,38 @@ import userAPI from '../../service/user/userAPI';
 const index = () => {
 
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
     const onFinish = (values) => {
-        // console.log('Success:', values.parol);
+        setIsLoading(true);
         const user = {username: values.username, password: values.parol};
 
-        userAPI.login(user).then((res) => {
-            console.log(user)
-            console.log(res)
-            // localStorage.setItem("token", res?.data?.token);
-            // localStorage.setItem("user", res?.data?.user?.first_name);
-            // localStorage.setItem("my_id", res.data?.user?.id);
-            if(res.status === 200){
-
-                navigate("/dashboard");
-                
-            }
-            
-        }).catch((err) => {
-            console.log(err.message);
+        if (user.username.trim().length && user.password.trim().length){
+            userAPI.login(user).then((res) => {
            
-        })
+                
+                localStorage.setItem("token", res?.data?.token);
+                localStorage.setItem("fullName", res?.data?.admin?.fullName);
+                localStorage.setItem("my_id", res?.data?.admin?._id);
+
+                if(res.status === 200 && localStorage.getItem("token")){
+                
+                    res?.data && message.success("Siz tizimga kirdingiz!");
+                    res.data && setIsLoading(false);
+                    navigate("/dashboard");
+                    
+                }
+                
+            }).catch((err) => {
+                console.log(err.message);
+                setIsLoading(false);
+                message.error("Tizimga kirishta xatolik bo'ldi!")
+            })
+        }else{
+            message.warning("Iltimos, barcha maydonlarni to'ldiring!")
+        }
+
+       
     };
 
 
@@ -100,7 +112,7 @@ const index = () => {
                                     span: 16,
                                 }}
                             >
-                                <Button type="primary" htmlType="submit" className='bg-indigo-600'>
+                                <Button loading={isLoading} type="primary" htmlType="submit" className='bg-indigo-600'>
                                     Kirish
                                 </Button>
                             </Form.Item>
