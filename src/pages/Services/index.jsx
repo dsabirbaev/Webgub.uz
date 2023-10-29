@@ -1,9 +1,28 @@
 
 
+import { useState, useEffect } from "react";
+import {ServiceTab} from "../../components/UI/Tables";
 
+import useServices from "../../service/services/useServices";
 import BreadCrumb from "../../components/UI/BreadCrumb";
 import {Plus} from "../../components/Icons";
+
 const index = () => {
+
+    const [service, setService] = useState([]);
+   
+    const getAllServices = async () => {
+
+        const response = await useServices.getServices();
+        const result = await response.data;
+        console.log(result)
+        setService(result?.services);
+    }
+
+    useEffect(() => {
+        getAllServices();
+    }, [])
+
     return (
         <div className="flex flex-col gap-y-5">
             <div className="rounded-md bg-white p-4 flex items-center justify-between">
@@ -15,7 +34,7 @@ const index = () => {
             </div>
 
             <div className="rounded-md bg-white p-4">
-                dd
+                <ServiceTab service={service}/>
             </div>
         </div>
     );

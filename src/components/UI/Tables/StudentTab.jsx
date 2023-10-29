@@ -2,7 +2,7 @@
 
 
 
-import { Space, Table, Tag } from 'antd';
+import { Table } from 'antd';
 import {Pencil, Check} from "../../Icons";
 
 const StudentTab = ({ student }) => {

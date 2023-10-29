@@ -13,8 +13,6 @@ const index = () => {
     const getAllCourses = async () => {
         const response = await useCourses.getCourses();
         const result = await response.data;
-        // console.log(result)
-        console.log( result?.courses)
         setCourse(result?.courses);
     }
 

@@ -10,7 +10,7 @@ const DashboardCard = ({title, logo, number, color}) => {
                 <h3 className="text-[18px]">{title}</h3>
             </div>
             <div className='flex items-center justify-between p-4'>
-                <span className="text-[70px] font-['SairaSemiBold']">{number}</span>
+                <span className="text-[60px] font-['SairaSemiBold']">{number}</span>
                 <span>{logo}</span>
             </div>
         </div>
