@@ -9,7 +9,7 @@ import Users from "./Users";
 import Courses from "./Courses";
 import Customers from "./Customers";
 import Services from "./Services";
-import Student from "./Student";
+
 import Plus from "./Plus";
 import Menu from "./Menu";
 import Admin from "./Admin";
@@ -20,4 +20,4 @@ import Cart from "./Cart";
 import Pencil from "./Pencil";
 import Check from "./Check";
 import Excel from "./Excel";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil, Check, Excel};
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil, Check, Excel};
