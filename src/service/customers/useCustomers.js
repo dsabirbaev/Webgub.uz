@@ -10,7 +10,7 @@ const headers =  {
 
 
 const useCustomers = {
-    getCustomers: () => api.get('/customer', {headers}),
+    getCustomers: () => api.get('/user', {headers}),
 }
 
 export default useCustomers;

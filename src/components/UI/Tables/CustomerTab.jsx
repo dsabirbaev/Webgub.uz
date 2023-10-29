@@ -4,10 +4,9 @@
 
 
 
-import { Space, Table, Tag } from 'antd';
-import {Pencil} from "../../Icons";
+import { Table } from 'antd';
 
-const StudentTab = ({ student }) => {
+const StudentTab = ({ customer }) => {
 
     const columns = [
         {
@@ -26,38 +25,27 @@ const StudentTab = ({ student }) => {
             key: 'telefon',
         },
         {
-            title: 'Kurs',
-            key: 'kurs',
-            dataIndex: 'kurs',
+            title: 'Xizmat',
+            key: 'xizmat',
+            dataIndex: 'xizmat',
         },
         {
             title: 'Ro\'yxatdan o\'tgan vaqti',
             key: 'royxatVaqti',
             dataIndex: 'royxatVaqti',
-        },
-        {
-            title: 'Holat',
-            key: 'holat',
-            dataIndex: 'holat',
-        },
-        {
-            title: 'Tahrirlash',
-            key: 'tahrirlash',
-            dataIndex: 'tahrirlash',
-        },
-
+        }
     ];
   
     
-    const data = student?.map((item, index) => {
-        const date = new Date(item?.courseId?.createdAt);
+    const data = customer?.map((item, index) => {
+        const date = new Date(item?.createdAt);
         return{
             
             key: item?.id, 
             number: index + 1,
             fam: item?.fullName,
             telefon: item?.phoneNumber, 
-            kurs: item?.courseId?.title, 
+            xizmat: item?.serviceId?.title, 
             royxatVaqti: `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`, 
             
         }
