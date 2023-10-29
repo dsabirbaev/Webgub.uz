@@ -3,4 +3,5 @@
 
 
 import StudentTab from "./StudentTab";
-export {StudentTab};
+import CourseTab from "./CourseTab";
+export {StudentTab, CourseTab};

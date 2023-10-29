@@ -14,7 +14,7 @@ const index = () => {
         const response = await useStudents.getStudents();
         const result = await response.data;
         // console.log(result)
-        console.log( result?.students[0])
+        // console.log( result?.students[0])
         setStudent(result?.students);
     }
 

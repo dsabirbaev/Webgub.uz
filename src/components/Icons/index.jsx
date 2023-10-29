@@ -18,4 +18,5 @@ import  Message  from "./Message";
 import Map from "./Map";
 import Cart from "./Cart";
 import Pencil from "./Pencil";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil};
+import Check from "./Check";
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Student, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil, Check};
