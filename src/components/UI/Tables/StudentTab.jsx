@@ -3,10 +3,10 @@
 
 
 import { Space, Table, Tag } from 'antd';
+import {Pencil} from "../../Icons";
 
+const StudentTab = ({ student }) => {
 
-const StudentTab = () => {
-    
     const columns = [
         {
             title: '#',
@@ -17,6 +17,7 @@ const StudentTab = () => {
             title: 'F.I.SH',
             dataIndex: 'fam',
             key: 'fam',
+            render: (text) => <a>{text}</a>,
         },
         {
             title: 'Telefon',
@@ -30,8 +31,8 @@ const StudentTab = () => {
         },
         {
             title: 'Ro\'yxatdan o\'tgan vaqti',
-            key: 'royxat',
-            dataIndex: 'royxat',
+            key: 'royxatVaqti',
+            dataIndex: 'royxatVaqti',
         },
         {
             title: 'Holat',
@@ -43,25 +44,28 @@ const StudentTab = () => {
             key: 'tahrirlash',
             dataIndex: 'tahrirlash',
         },
-       
-    ];
 
-    const data = [
-        {   
-            number: '22',
-            key: '1',
-            fam: 'John Brown',
-            telefon: 32,
-            kurs: 'React',
-            royxat: '2023',
-            holat: 'zor',
-            tahrirlash: 'kerak'
-        }
-       
     ];
+  
+    
+    const data = student?.map((item, index) => {
+        const date = new Date(item?.courseId?.createdAt);
+        return{
+            
+            key: item?.id, 
+            number: index + 1,
+            fam: item?.fullName,
+            telefon: item?.phoneNumber, 
+            kurs: item?.courseId?.title, 
+            royxatVaqti: `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`, 
+            holat: 'zor', 
+            tahrirlash: <span className='text-yellow-500 cursor-pointer'> <Pencil/> </span>
+        }
+    });
+
     return (
 
-        <Table columns={columns} dataSource={data} />
+        <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
     )
 }
 
