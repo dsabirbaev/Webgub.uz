@@ -4,10 +4,10 @@ import BreadCrumb from "../../components/UI/BreadCrumb";
 import userAPI from '../../service/user/userAPI';
 const index = () => {
     
-    const [info, setInfo] = useState([]); 
-
+    const [info, setInfo] = useState({ admin: { fullName: '' } }); 
+ 
     const onFinish = (values) => {
-        console.log(values)
+        
         
         const user = { fullName: values.fullName, username: values.username, password: values.parol };
         console.log(user)
@@ -21,11 +21,14 @@ const index = () => {
         const response = await userAPI.getMe();
         const result = await response.data;
         setInfo(result);
+       
     }
     console.log(info?.admin?.fullName)
     useEffect(() => {
         getAdmin();
+       
     },[])
+  
     return (
         <div className="flex flex-col gap-y-5">
             <div className="rounded-md bg-white p-4">
@@ -45,6 +48,20 @@ const index = () => {
                         initialValues={{
                             remember: true,
                         }}
+                        fields={[
+                            {
+                                name: ["fullName"],
+                                value: info?.admin?.fullName,
+                            },
+                            {
+                                name: ["username"],
+                                value: info?.admin?.username,
+                            },
+                            {
+                                name: ["parol"],
+                                value: info?.admin?.password,
+                            },
+                        ]}
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
@@ -60,7 +77,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input id='fullname'   />
+                            <Input id='fullname' disabled />
                         </Form.Item>
 
                         <label htmlFor="login">Foydalanuvchi nomi</label>
@@ -73,7 +90,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input id='login' />
+                            <Input id='login' disabled />
                         </Form.Item>
 
                         <label htmlFor="parol">Foydalanuvchi paroli</label>
@@ -87,7 +104,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input.Password id='parol' />
+                            <Input.Password id='parol' disabled />
                         </Form.Item>
 
 
