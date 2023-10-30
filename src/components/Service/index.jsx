@@ -10,9 +10,9 @@ const index = () => {
                     <h4 className="text-[#4E596B] text-[25px] font-['InterMedium'] text-center mb-5">What our student say about us</h4>
                    
                     <div className="flex justify-between gap-x-[67px]">
+                        {/* <ServiceCard/>
                         <ServiceCard/>
-                        <ServiceCard/>
-                        <ServiceCard/>
+                        <ServiceCard/> */}
                     </div>
                 </div>
             </div>

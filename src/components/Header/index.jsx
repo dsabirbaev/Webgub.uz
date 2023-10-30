@@ -64,7 +64,7 @@ const index = () => {
                                 :
                                 <>
                                     <ul className="flex items-center gap-x-[72px] text-[#1B2336] font-['SairaMedium'] text-[20px]">
-                                        <li><a href="#">Courses</a></li>
+                                        <li><a href="#courses">Courses</a></li>
                                         <li><a href="#services">Services</a></li>
                                     </ul>
 
