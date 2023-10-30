@@ -21,4 +21,5 @@ import Pencil from "./Pencil";
 import Check from "./Check";
 import Excel from "./Excel";
 import PlusModal from "./PlusModal";
-export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil, Check, Excel, PlusModal};
+import DoubleCheck from "./DoubleCheck";
+export {Play, Pause, Search, Home, Users, Courses, Customers, Services, Plus, Menu, Admin, Phone, Message, Map, Cart, Pencil, Check, Excel, PlusModal, DoubleCheck};

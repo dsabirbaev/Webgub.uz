@@ -3,7 +3,7 @@
 
 
 import { Table } from 'antd';
-import {Pencil, Check} from "../../Icons";
+import { Pencil, Check, DoubleCheck } from "../../Icons";
 
 const StudentTab = ({ student }) => {
 
@@ -45,26 +45,26 @@ const StudentTab = ({ student }) => {
         },
 
     ];
-  
-    
+
+
     const data = student?.map((item, index) => {
         const date = new Date(item?.createdAt);
-        return{
-            
-            key: item?.id, 
+        return {
+
+            key: item?.id,
             number: index + 1,
             fam: item?.fullName,
-            telefon: item?.phoneNumber, 
-            kurs: item?.courseId?.title, 
-            royxatVaqti: `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`, 
-            holat: <span className='p-1 w-fit block bg-yellow-500 rounded-md'> <Check/></span>, 
-            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil/> </span>
+            telefon: item?.phoneNumber,
+            kurs: item?.courseId?.title,
+            royxatVaqti: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`,
+            holat: <span className={`p-1 w-fit block ${ item?.status == 2 ? "bg-green-500 text-white" : "bg-yellow-500"}  rounded-md`}>{item?.status == 2 ? <DoubleCheck/> : <Check /> } </span>,
+            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
         }
     });
 
     return (
 
-        <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+        <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
     )
 }
 

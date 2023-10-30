@@ -7,7 +7,7 @@ import BreadCrumb from "../../components/UI/BreadCrumb";
 import {Plus} from "../../components/Icons";
 
 const index = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const [course, setCourse] = useState([]);
    
@@ -24,13 +24,13 @@ const index = () => {
 
     return (
         <div className="flex flex-col gap-y-5">
-            <CourseModal  op={isModalOpen}/>
+            <CourseModal  open={open} setOpen={setOpen}/>
             <div className="rounded-md bg-white p-4 flex items-center justify-between">
                 <div>
                     <span className="font-['SairaSemiBold'] text-blue-600"> Kurslar</span>
                     <BreadCrumb text={"Kurslar"} />
                 </div>
-                <span onClick={() => setIsModalOpen(!isModalOpen)} className="text-white py-1 px-2 rounded-md bg-sky-600 hover:bg-sky-900 duration-200 active:bg-black cursor-pointer"><Plus/></span>
+                <span onClick={() => setOpen(!open)} className="text-white py-1 px-2 rounded-md bg-sky-600 hover:bg-sky-900 duration-200 active:bg-black cursor-pointer"><Plus/></span>
             </div>
 
             <div className="rounded-md bg-white p-4">
