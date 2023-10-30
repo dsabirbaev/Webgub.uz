@@ -15,7 +15,6 @@ const index = () => {
 
         const response = await useServices.getServices();
         const result = await response.data;
-        console.log(result)
         setService(result?.services);
     }
 

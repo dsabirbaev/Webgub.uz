@@ -1,7 +1,28 @@
 
+
+import { useState, useEffect } from "react";
+import useServices from "../../service/services/useServices";
 import  {ServiceCard} from "../UI/Card";
 import "./style.scss";
+
+
 const index = () => {
+
+    const [service, setService] = useState([]);
+   
+    const getAllServices = async () => {
+
+        const response = await useServices.getServices();
+        const result = await response.data;
+        console.log(result)
+        setService(result?.services);
+    }
+
+    useEffect(() => {
+        getAllServices();
+    }, [])
+
+
     return (
         <section id="services" className="pt-[132px] pb-[72px] bg-[#DBEDFF]">
             <div className="container">
@@ -10,6 +31,12 @@ const index = () => {
                     <h4 className="text-[#4E596B] text-[25px] font-['InterMedium'] text-center mb-5">What our student say about us</h4>
                    
                     <div className="flex justify-between gap-x-[67px]">
+
+                        {
+                            service?.map((item) => {
+                                return <ServiceCard state={item} key={item?.id}/>
+                            })
+                        }
                         {/* <ServiceCard/>
                         <ServiceCard/>
                         <ServiceCard/> */}

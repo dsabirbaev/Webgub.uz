@@ -10,6 +10,7 @@ const index = () => {
     const getAllCourses = async () => {
         const response = await useCourses.getCourses();
         const result = await response.data;
+        console.log(result)
         setCourse(result?.courses);
     }
 
@@ -27,7 +28,7 @@ const index = () => {
                     <div className="flex items-center gap-[36px]">
                         {
                             course?.map((item) => {
-                                return <ServiceCard state={item} key={item?.id} />
+                                return <ServiceCard state={item} key={item?.id} courses={true}/>
                             })
                         }
                         
