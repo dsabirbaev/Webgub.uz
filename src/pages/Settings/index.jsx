@@ -4,8 +4,8 @@ import BreadCrumb from "../../components/UI/BreadCrumb";
 import userAPI from '../../service/user/userAPI';
 const index = () => {
     
-    const [info, setInfo] = useState({ admin: { fullName: '' } }); 
- 
+    const [info, setInfo] = useState(""); 
+    const [edit, setEdit] = useState(true);
     const onFinish = (values) => {
         
         
@@ -77,7 +77,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input id='fullname' disabled />
+                            <Input id='fullname' disabled={edit} />
                         </Form.Item>
 
                         <label htmlFor="login">Foydalanuvchi nomi</label>
@@ -90,7 +90,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input id='login' disabled />
+                            <Input id='login' disabled={edit} />
                         </Form.Item>
 
                         <label htmlFor="parol">Foydalanuvchi paroli</label>
@@ -104,7 +104,7 @@ const index = () => {
                                 },
                             ]}
                         >
-                            <Input.Password id='parol' disabled />
+                            <Input.Password id='parol' disabled={edit} />
                         </Form.Item>
 
 
@@ -115,8 +115,8 @@ const index = () => {
                                 span: 16,
                             }}
                         >
-                            <Button type="primary" htmlType="submit" className='bg-indigo-600'>
-                                Tahrirlash
+                            <Button onClick={() => setEdit(!edit)} type="primary" htmlType="submit" className={`${edit ? "bg-indigo-600" : "bg-green-600"}`}>
+                                {edit ? "Tahrirlash" : "Saqlash"}
                             </Button>
                         </Form.Item>
                     </Form>

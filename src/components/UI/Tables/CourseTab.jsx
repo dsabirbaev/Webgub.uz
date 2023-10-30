@@ -1,11 +1,9 @@
 
-
-
-import {Table} from 'antd';
-import {Pencil} from "../../Icons";
+import { Table } from 'antd';
+import { Pencil } from "../../Icons";
 
 const CourseTab = ({ course }) => {
-
+    
     const columns = [
         {
             title: '#',
@@ -39,25 +37,27 @@ const CourseTab = ({ course }) => {
         },
 
     ];
-  
-    
+
+
     const data = course?.map((item, index) => {
         const date = new Date(item?.createdAt);
-        return{
-            
-            key: item?.id, 
+        return {
+
+            key: item?.id,
             number: index + 1,
             kursId: item?.id,
-            kursNomi: item?.title, 
-            talabalarSoni: item?.students.length, 
-            yarVaqti: `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`, 
-            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil/> </span>
+            kursNomi: item?.title,
+            talabalarSoni: item?.students.length,
+            yarVaqti: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`,
+            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
         }
     });
 
     return (
+        <>
+            <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+        </>
 
-        <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
     )
 }
 
