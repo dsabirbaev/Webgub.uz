@@ -6,11 +6,9 @@ const index = () => {
     
     const [info, setInfo] = useState(""); 
     const [edit, setEdit] = useState(true);
-    const onFinish = (values) => {
-        
-        
+    const onFinish = (values) => { 
         const user = { fullName: values.fullName, username: values.username, password: values.parol };
-        console.log(user)
+       
     }
 
     const onFinishFailed = (errorInfo) => {
@@ -23,7 +21,6 @@ const index = () => {
         setInfo(result);
        
     }
-    console.log(info?.admin?.fullName)
     useEffect(() => {
         getAdmin();
        

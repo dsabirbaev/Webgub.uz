@@ -28,46 +28,44 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home/>
             },
-            {
-                path: "/dashboard",
-                element: <Dashboard/>,
-                children: [
-                    {
-                        path: "/dashboard",
-                        element: <DashboardHome/>
-                    },
-                    {
-                        path: "/dashboard/students",
-                        element: <Students/>
-                    },
-                    {
-                        path: "/dashboard/courses",
-                        element: <Courses/>
-                    },
-                    {
-                        path: "/dashboard/customers",
-                        element: <Customers/>
-                    },
-                    {
-                        path: "/dashboard/services",
-                        element: <Services/>
-                    },
-                    {
-                        path: "/dashboard/settings",
-                        element: <Settings/>
-                    },
-
-                ]
-               
-            },
-           
-
         ]
     },
     {
         path: "/login",
         element: <Login />
-    }
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard/>,
+        children: [
+            {
+                path: "/dashboard",
+                element: <DashboardHome/>
+            },
+            {
+                path: "/dashboard/students",
+                element: <Students/>
+            },
+            {
+                path: "/dashboard/courses",
+                element: <Courses/>
+            },
+            {
+                path: "/dashboard/customers",
+                element: <Customers/>
+            },
+            {
+                path: "/dashboard/services",
+                element: <Services/>
+            },
+            {
+                path: "/dashboard/settings",
+                element: <Settings/>
+            },
+
+        ]
+       
+    },
 
 ]);
 
