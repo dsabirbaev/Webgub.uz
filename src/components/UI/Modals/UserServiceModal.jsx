@@ -3,27 +3,28 @@
 
 import { useState, useEffect } from 'react';
 import { Modal, Form, Input, Button, Select, message } from 'antd';
-import useStudents from '../../../service/students/useStudents';
-import useCourses from "../../../service/courses/useCourses";
+
+import useServices from '../../../service/services/useServices';
 
 const CourseModal = ({ open, setOpen }) => {
 
-    const [courseId, setCourseId] = useState([]);
+    const [serviceId, setServiceId] = useState([]);
 
     const handleOpen = () => setOpen(!open);
 
     const onFinish = (values) => {
         // console.log(values)
-        const course = { fullName: values.fullName, phoneNumber: values.phoneNumber, courseId: values.courseId };
+        const service = { fullName: values.fullName, phoneNumber: values.phoneNumber, serviceId: values.serviceId };
 
+        console.log(service)
 
-        if (course.fullName.trim().length && course.phoneNumber.trim().length && course.courseId.trim().length) {
+        if (service.fullName.trim().length && service.phoneNumber.trim().length && service.serviceId.trim().length) {
 
-            useStudents.userRegistration(course).then((res) => {
-                console.log(res)
+            useServices.userRegistration(service).then((res) => {
+               
 
                 if(res.status === 201){
-                    message.success("Siz kurska yozildingiz!");
+                    message.success("Siz xizmatga yozildingiz!");
                     handleOpen();
                 }
                 
@@ -46,17 +47,17 @@ const CourseModal = ({ open, setOpen }) => {
         console.log('Failed:', errorInfo);
     };
 
-    const getCourseId = async () => {
-        const response = await useCourses.getCourses();
+    const getServiceId = async () => {
+        const response = await useServices.getServices();
         const result = await response.data;
-        setCourseId(result?.courses);
+        setServiceId(result?.services);
     }
 
     useEffect(() => {
-        getCourseId();
+        getServiceId();
     }, [])
 
-    const options = courseId?.map(item => (
+    const options = serviceId?.map(item => (
         <Select.Option key={item.id} value={item.id}>
             {item.title}
         </Select.Option>
@@ -65,7 +66,7 @@ const CourseModal = ({ open, setOpen }) => {
     return (
         <>
 
-            <Modal title="Kurslar" open={open} footer={null} onCancel={handleOpen} >
+            <Modal title="Xizmatlar" open={open} footer={null} onCancel={handleOpen} >
 
                 <Form
                     name="basic"
@@ -109,9 +110,9 @@ const CourseModal = ({ open, setOpen }) => {
                         <Input id='phoneNumber' placeholder='Tel' />
                     </Form.Item>
 
-                    <label htmlFor="courseId">Xizmatni tanlang</label>
+                    <label htmlFor="serviceId">Xizmatni tanlang</label>
                     <Form.Item
-                        name="courseId"
+                        name="serviceId"
                         rules={[
                             {
                                 required: true,

@@ -1,12 +1,17 @@
 
 
+import { useState } from "react";
+import { UserServiceModal } from "../Modals";
 import { Cart } from "../../Icons";
 
 
 const ServiceCard = ({state:{title, description, image}}) => {
-   
+    const [open, setOpen] = useState(false);
+    
     return (
         <div className="w-[420px]  overflow-hidden rounded-[20px] hover:shadow-lg">
+            <UserServiceModal open={open} setOpen={setOpen} />
+
             <img src={`${"http://api.webhub.uz" + image }`} alt={title} className="h-[323px]  object-cover"/>
            
             <div className="p-[33px] font-['SairaSemiBold'] bg-white">
@@ -17,7 +22,7 @@ const ServiceCard = ({state:{title, description, image}}) => {
 
                 <div className="flex justify-between">
                     <span className="text-[22px]">$33.99</span>
-                    <span className="cursor-pointer"><Cart /></span>
+                    <span onClick={() => setOpen(!open)} className="cursor-pointer"><Cart /></span>
                 </div>
             </div>
 

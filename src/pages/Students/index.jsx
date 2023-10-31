@@ -7,13 +7,17 @@ import { Excel } from "../../components/Icons";
 
 
 const index = () => {
-    
+
     const [student, setStudent] = useState([]);
 
     const getAllStudents = async () => {
-        const response = await useStudents.getStudents();
-        const result = await response.data;
-        setStudent(result?.students);
+        try {
+            const response = await useStudents.getStudents();
+            const result = response.data;
+            setStudent(result.students);
+        } catch (error) {
+            console.error('Error fetching students', error);
+        }
     }
 
     useEffect(() => {
@@ -26,7 +30,7 @@ const index = () => {
 
     return (
         <div className="flex flex-col gap-y-5">
-        
+
             <div className="rounded-md bg-white p-4">
                 <span className="font-['SairaSemiBold'] text-blue-600"> O'quvchilar</span>
                 <BreadCrumb text={"O'quvchilar"} />

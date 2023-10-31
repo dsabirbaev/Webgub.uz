@@ -1,6 +1,6 @@
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StudentModal } from "../../UI/Modals";
 import { Table } from 'antd';
 import { Pencil, Check, DoubleCheck } from "../../Icons";
@@ -70,6 +70,7 @@ const StudentTab = ({ student }) => {
         }
     });
 
+   
     return (
         <>
                 <StudentModal open={open} setOpen={setOpen} id={idUser}/>
