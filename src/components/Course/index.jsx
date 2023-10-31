@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import {ServiceCard} from "../UI/Card";
+import {CourseCard} from "../UI/Card";
 import useCourses from "../../service/courses/useCourses";
 import "./style.scss";
 const index = () => {
@@ -27,7 +27,7 @@ const index = () => {
                     <div className="flex items-center gap-[36px]">
                         {
                             course?.map((item) => {
-                                return <ServiceCard state={item} key={item?.id} courses={true}/>
+                                return <CourseCard state={item} key={item?.id}/>
                             })
                         }
                         

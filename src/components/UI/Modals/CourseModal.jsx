@@ -1,7 +1,5 @@
 
 
-
-
 import { Modal, Form, Input, Button, Upload } from 'antd';
 import { PlusModal } from "../../Icons";
 

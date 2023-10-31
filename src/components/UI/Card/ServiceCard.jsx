@@ -3,11 +3,11 @@
 import { Cart } from "../../Icons";
 
 
-const ServiceCard = ({state:{title, description, image}, courses}) => {
+const ServiceCard = ({state:{title, description, image}}) => {
    
     return (
         <div className="w-[420px]  overflow-hidden rounded-[20px] hover:shadow-lg">
-            <img src={`${courses ? image : "http://api.webhub.uz" + image }`} alt={title} className="h-[323px]  object-cover"/>
+            <img src={`${"http://api.webhub.uz" + image }`} alt={title} className="h-[323px]  object-cover"/>
            
             <div className="p-[33px] font-['SairaSemiBold'] bg-white">
                 <div className="flex items-center justify-between text-[#4E596B] text-[14px] tracking-[-0.42px] mb-5">
