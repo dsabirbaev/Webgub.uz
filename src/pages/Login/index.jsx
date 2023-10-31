@@ -16,6 +16,7 @@ const index = () => {
         const user = {username: values.username, password: values.parol};
 
         if (user.username.trim().length && user.password.trim().length){
+
             userAPI.login(user).then((res) => {
            
                 
@@ -32,7 +33,7 @@ const index = () => {
                 }
                 
             }).catch((err) => {
-                console.log(err.message);
+                
                 setIsLoading(false);
                 message.error("Tizimga kirishta xatolik bo'ldi!")
             })

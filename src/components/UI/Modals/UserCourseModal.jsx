@@ -2,7 +2,7 @@
 
 
 import { useState, useEffect } from 'react';
-import { Modal, Form, Input, Button, Select } from 'antd';
+import { Modal, Form, Input, Button, Select, message } from 'antd';
 import useStudents from '../../../service/students/useStudents';
 import useCourses from "../../../service/courses/useCourses";
 
@@ -13,11 +13,34 @@ const CourseModal = ({ open, setOpen }) => {
     const handleOpen = () => setOpen(!open);
 
     const onFinish = (values) => {
-        console.log(values)
+        // console.log(values)
+        const course = { fullName: values.fullName, phoneNumber: values.phoneNumber, courseId: values.courseId };
+
+
+        if (course.fullName.trim().length && course.phoneNumber.trim().length && course.courseId) {
+
+            useStudents.userRegistration(course).then((res) => {
+                console.log(res)
+
+                if(res.status === 201){
+                    message.success("Siz kurska yo'zildingiz!");
+                    handleOpen();
+                }
+                
+            }).catch((err) => {
+                console.log(err)
+                message.error("Tizimga kirishta xatolik bo'ldi!")
+            })
+
+        } else {
+            message.warning("Iltimos, barcha maydonlarni to'ldiring!")
+        }
+
+
     }
 
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
+        // console.log(`selected ${value}`);
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -28,13 +51,6 @@ const CourseModal = ({ open, setOpen }) => {
         const result = await response.data;
         setCourseId(result?.courses);
     }
-
-    
-    useStudents.userRegistration().then((res) => {
-        console.log(res)
-    }).catch((err) => {
-        console.log(err)
-    })
 
     useEffect(() => {
         getCourseId();
@@ -104,7 +120,7 @@ const CourseModal = ({ open, setOpen }) => {
                         ]}
                     >
                         <Select
-                            initialvalues="Xizmat turi"
+                            defaultValue="Xizmat turi"
                             className="w-full"
                             onChange={handleChange}
                         >
@@ -119,17 +135,12 @@ const CourseModal = ({ open, setOpen }) => {
                             span: 5,
                         }}
                     >
-                        <Button type="primary" htmlType="submit" className='text-white bg-sky-600 block w-fit rounded-md cursor-pointer p-1'>
+                        {/* onClick={handleOpen} */}
+                        <Button  type="primary" htmlType="submit" className='text-white bg-sky-600 block w-fit rounded-md cursor-pointer p-1'>
                             Jo'natish
                         </Button>
                     </Form.Item>
                 </Form>
-
-
-
-                <div className='flex justify-end'>
-                    <button onClick={handleOpen} className='mt-3 py-2 px-4 rounded-md bg-red-600 text-white text-[16px] flex items-end cursor-pointer'>Chiqish</button>
-                </div>
 
             </Modal>
         </>
