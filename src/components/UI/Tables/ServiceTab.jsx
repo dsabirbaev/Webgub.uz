@@ -1,10 +1,11 @@
 
-
+import { useState } from 'react';
 import {Table} from 'antd';
 import {Pencil} from "../../Icons";
-
+import { EditService } from '../Modals';
 const ServiceTab = ({ service }) => {
-
+    const [open, setOpen] = useState(false);
+    const [idService, setIdService] = useState("");
     const columns = [
         {
             title: '#',
@@ -38,6 +39,11 @@ const ServiceTab = ({ service }) => {
         },
 
     ];
+
+    const getId = (id) => {
+        setOpen(!open)
+        setIdService(id)
+    }
   
     
     const data = service?.map((item, index) => {
@@ -50,13 +56,16 @@ const ServiceTab = ({ service }) => {
             kursNomi: item?.title, 
             buyurtmachiSoni: item?.users.length, 
             yarVaqti: `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`, 
-            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil/> </span>
+            tahrirlash: <span onClick={() => getId(item?.id)} className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil/> </span>
         }
     });
 
     return (
-
-        <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+        <>
+             <EditService  open={open} setOpen={setOpen} idService={idService}/>
+             <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+        </>
+        
     )
 }
 

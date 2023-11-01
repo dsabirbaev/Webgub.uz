@@ -24,7 +24,7 @@ const index = () => {
 
     return (
         <div className="flex flex-col gap-y-5">
-            <ServiceModal  open={open} setOpen={setOpen}/>
+            <ServiceModal  open={open} setOpen={setOpen} getAllServices={getAllServices}/>
             <div className="rounded-md bg-white p-4 flex items-center justify-between">
                 <div>
                     <span className="font-['SairaSemiBold'] text-blue-600">Xizmatlar</span>

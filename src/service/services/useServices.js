@@ -18,6 +18,13 @@ const useServices = {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
     }),
+    getOneService: (id) => api.get(`/service/${id}`, {headers}),
+    updateService: (id, data) => api.put(`/service/${id}`, data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+    }),
 }
 
 export default useServices;

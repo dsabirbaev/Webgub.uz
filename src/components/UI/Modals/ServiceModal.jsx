@@ -7,7 +7,7 @@ import { PlusModal } from "../../Icons";
 
 
 
-const ServiceModal = ({ open, setOpen }) => {
+const ServiceModal = ({ open, setOpen, getAllServices}) => {
 
     const [nameImg, setNameImg] = useState("");
     const { TextArea } = Input;
@@ -36,6 +36,7 @@ const ServiceModal = ({ open, setOpen }) => {
    
     const handleOpen = () =>{
         setOpen(!open)
+        getAllServices()
     };
     
 

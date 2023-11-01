@@ -1,32 +1,35 @@
-import { useState } from 'react';
-import useCourses from '../../../service/courses/useCourses';
+
+
+
+import { useState, useEffect } from 'react';
+import useServices from '../../../service/services/useServices';
+
 import { Modal, Form, Input, Button, Upload, message} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { PlusModal } from "../../Icons";
 
 
 
-const CourseModal = ({ open, setOpen, getAllCourses }) => {
-
+const EditService = ({ open, setOpen, idService}) => {
+    const [info, setInfo] = useState(""); 
     const [nameImg, setNameImg] = useState("");
     const { TextArea } = Input;
    
     const onFinish = (values) => {
        
-        const course = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
-        
-        useCourses.createCourse(course).then((res) => {
-           
-            if(res.status === 201){
-                message.success("Kurs muvaffaqqiyatli yaratildi!");
-                handleOpen();
+        const service = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
+        console.log(service)
+
+        useServices.updateService(idService, service).then((res) => {
+            console.log(res)
+            if(res.status === 200){
+                message.success("Xizmat muvaffaqqiyatli tahrirlandi!");
+                // handleOpen();
             }
         }).catch((err) => {
             console.log(err)
             message.success("Xatolik yuz berd!");
         })
-
-        
 
     }
     const onFinishFailed = (errorInfo) => {
@@ -34,15 +37,27 @@ const CourseModal = ({ open, setOpen, getAllCourses }) => {
     };
    
     const handleOpen = () =>{
-        setOpen(!open);
-        getAllCourses();
+        setOpen(!open)
     };
+   
+   
+    const getService = () => {
+        useServices.getOneService(idService).then((res) => {
+        
+            setInfo(res?.data?.service)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     
-
+    useEffect(() => {
+        getService();    
+    }, [idService]);
+  
     return (
         <>
 
-            <Modal title="Kurs qo'shish" open={open} footer={null} onCancel={handleOpen} >
+            <Modal title="Xizmat qo'shish" open={open} footer={null} onCancel={handleOpen} >
 
                 <Form
                     name="basic"
@@ -53,17 +68,31 @@ const CourseModal = ({ open, setOpen, getAllCourses }) => {
                     initialValues={{
                         remember: true,
                     }}
+                    fields={[
+                        {
+                            name: ["image"],
+                            value: info?.image,
+                        },
+                        {
+                            name: ["title"],
+                            value: info?.title,
+                        },
+                        {
+                            name: ["description"],
+                            value: info?.description,
+                        }
+                    ]}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <label htmlFor="image">Kurs rasmi</label>
+                    <label htmlFor="image">Xizmat rasmi</label>
                     <Form.Item
                         name="image"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs rasmini kiriting!',
+                                message: 'Iltimos, xizmat rasmini kiriting!',
                             },
                         ]}
                     >
@@ -73,30 +102,30 @@ const CourseModal = ({ open, setOpen, getAllCourses }) => {
                         </Upload>
                     </Form.Item>
 
-                    <label htmlFor="title">Kurs nomi</label>
+                    <label htmlFor="title">Xizmat nomi</label>
                     <Form.Item
                         name="title"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs nomini kiriting!',
+                                message: 'Iltimos, xizmat nomini kiriting!',
                             },
                         ]}
                     >
-                        <Input id='title' placeholder='Kurs nomi'/>
+                        <Input id='title' placeholder='Xizmat nomi'/>
                     </Form.Item>
 
-                    <label htmlFor="description">Kurs haqida</label>
+                    <label htmlFor="description">Xizmat haqida</label>
                     <Form.Item
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs haqida kiriting!',
+                                message: 'Iltimos, xizmat haqida kiriting!',
                             },
                         ]}
                     >
-                        <TextArea rows={4} id='description' placeholder='Kurs haqida'/>
+                        <TextArea rows={4} id='description' placeholder='Xizmat haqida'/>
                     </Form.Item>
 
 
@@ -122,4 +151,4 @@ const CourseModal = ({ open, setOpen, getAllCourses }) => {
         </>
     );
 };
-export default CourseModal;
+export default EditService;

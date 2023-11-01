@@ -1,18 +1,17 @@
 
 
-
-
-import { useState } from 'react';
-
 import useStudents from '../../../service/students/useStudents';
 
 import { Modal, Form, Button, Select, message } from 'antd';
 import { PlusModal } from "../../Icons";
 
 
-const CourseModal = ({ open, setOpen, id, userName }) => {
+const CourseModal = ({ open, setOpen, id, userName, getAllStudents }) => {
 
-    const handleOpen = () => setOpen(!open);
+    const handleOpen = () => {
+        setOpen(!open);
+        getAllStudents();
+    };
 
     const handleChange = (value) => {
         // console.log(`selected ${value}`);

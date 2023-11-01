@@ -13,7 +13,7 @@ const index = () => {
     const getAllStudents = async () => {
         try {
             const response = await useStudents.getStudents();
-            const result = response.data;
+            const result = await response.data;
             setStudent(result.students);
         } catch (error) {
             console.error('Error fetching students', error);
@@ -40,7 +40,7 @@ const index = () => {
                 <div className="mb-5 text-white rounded-md bg-sky-600 w-fit p-2 text-[12px] cursor-pointer flex items-center gap-x-2">Export to Excel <span className="text-white"><Excel /></span></div>
 
                 <div>
-                    <StudentTab student={student} />
+                    <StudentTab student={student} getAllStudents={getAllStudents} />
                 </div>
             </div>
         </div>

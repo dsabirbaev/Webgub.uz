@@ -5,7 +5,7 @@ import { StudentModal } from "../../UI/Modals";
 import { Table } from 'antd';
 import { Pencil, Check, DoubleCheck, Stop } from "../../Icons";
 
-const StudentTab = ({ student }) => {
+const StudentTab = ({ student, getAllStudents }) => {
     
     const [open, setOpen] = useState(false);
     const [idUser, setIdUser] = useState(null);
@@ -75,7 +75,7 @@ const StudentTab = ({ student }) => {
    
     return (
         <>
-                <StudentModal open={open} setOpen={setOpen} id={idUser} userName={userName}/>
+                <StudentModal open={open} setOpen={setOpen} id={idUser} userName={userName} getAllStudents={getAllStudents}/>
                 <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
         </>
         
