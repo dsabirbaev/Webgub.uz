@@ -1,24 +1,25 @@
+
 import { useState } from 'react';
-import useCourses from '../../../service/courses/useCourses';
+import useServices from '../../../service/services/useServices';
 import { Modal, Form, Input, Button, Upload, message} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { PlusModal } from "../../Icons";
 
 
 
-const CourseModal = ({ open, setOpen }) => {
+const ServiceModal = ({ open, setOpen }) => {
 
     const [nameImg, setNameImg] = useState("");
     const { TextArea } = Input;
    
     const onFinish = (values) => {
        
-        const course = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
+        const service = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
         
-        useCourses.createCourse(course).then((res) => {
+        useServices.createService(service).then((res) => {
            
             if(res.status === 201){
-                message.success("Kurs muvaffaqqiyatli yaratildi!");
+                message.success("Xizmat muvaffaqqiyatli yaratildi!");
                 handleOpen();
             }
         }).catch((err) => {
@@ -41,7 +42,7 @@ const CourseModal = ({ open, setOpen }) => {
     return (
         <>
 
-            <Modal title="Kurs qo'shish" open={open} footer={null} onCancel={handleOpen} >
+            <Modal title="Xizmat qo'shish" open={open} footer={null} onCancel={handleOpen} >
 
                 <Form
                     name="basic"
@@ -56,13 +57,13 @@ const CourseModal = ({ open, setOpen }) => {
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <label htmlFor="image">Kurs rasmi</label>
+                    <label htmlFor="image">Xizmat rasmi</label>
                     <Form.Item
                         name="image"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs rasmini kiriting!',
+                                message: 'Iltimos, xizmat rasmini kiriting!',
                             },
                         ]}
                     >
@@ -72,30 +73,30 @@ const CourseModal = ({ open, setOpen }) => {
                         </Upload>
                     </Form.Item>
 
-                    <label htmlFor="title">Kurs nomi</label>
+                    <label htmlFor="title">Xizmat nomi</label>
                     <Form.Item
                         name="title"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs nomini kiriting!',
+                                message: 'Iltimos, xizmat nomini kiriting!',
                             },
                         ]}
                     >
-                        <Input id='title' placeholder='Kurs nomi'/>
+                        <Input id='title' placeholder='Xizmat nomi'/>
                     </Form.Item>
 
-                    <label htmlFor="description">Kurs haqida</label>
+                    <label htmlFor="description">Xizmat haqida</label>
                     <Form.Item
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Iltimos, kurs haqida kiriting!',
+                                message: 'Iltimos, xizmat haqida kiriting!',
                             },
                         ]}
                     >
-                        <TextArea rows={4} id='description' placeholder='Kurs haqida'/>
+                        <TextArea rows={4} id='description' placeholder='Xizmat haqida'/>
                     </Form.Item>
 
 
@@ -121,4 +122,4 @@ const CourseModal = ({ open, setOpen }) => {
         </>
     );
 };
-export default CourseModal;
+export default ServiceModal;
