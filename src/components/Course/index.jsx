@@ -24,7 +24,7 @@ const index = () => {
                     <h2 className="mb-[48px] text-[#323232] font-['RowdiesRegular'] text-[45px] tracking-[-1.35px]">Featured <span className="text-[#2AAA94]">Course</span></h2>
                     <p className="mb-[90px] text-[#4E596B] text-[25px] leading-[35px] font-['SairaRegular'] w-[691px] text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporidunt ut labore veniam...</p>
 
-                    <div className="flex items-center gap-[36px]">
+                    <div className="grid grid-cols-3 gap-[36px]">
                         {
                             course?.map((item) => {
                                 return <CourseCard state={item} key={item?.id}/>

@@ -1,21 +1,53 @@
-
-
-import { Modal, Form, Input, Button, Upload } from 'antd';
+import { useState } from 'react';
+import useCourses from '../../../service/courses/useCourses';
+import { Modal, Form, Input, Button, Upload, message } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { PlusModal } from "../../Icons";
+
 
 
 const CourseModal = ({ open, setOpen }) => {
 
+    const [nameImg, setNameImg] = useState("");
     const { TextArea } = Input;
 
     const handleOpen = () => setOpen(!open);
 
     const onFinish = (values) => {
-        console.log(values)
+       
+        const course = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
+        
+        
+
+        // useCourses.createCourse(course).then((res) => {
+        //     console.log(res)
+        //     if(res.status === 201){
+        //         message.success("Kurs muvaffaqqiyatli yaratildi!");
+        //         handleOpen();
+        //     }
+        // }).catch((err) => {
+        //     console.log(err)
+        //     message.success("Xatolik yuz berd!");
+        // })
+
     }
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+    const props = {
+       
+        onChange(info) {
+          
+          if (info.file.status !== 'uploading') {
+            
+            setNameImg(info.fileList[0].name)
+          }
+        
+        },
+      };
+
+
+
     return (
         <>
 
@@ -44,8 +76,9 @@ const CourseModal = ({ open, setOpen }) => {
                             },
                         ]}
                     >
-                        <Upload>
-                            <Button>Choose File</Button>
+                        <Upload showUploadList={false} accept=".png,.jpeg" {...props}>
+                            <Button icon={<UploadOutlined />}>File yuklash uchun bosing</Button>
+                            <span className='ml-4 font-medium text-sky-500'>{nameImg}</span>
                         </Upload>
                     </Form.Item>
 
@@ -59,7 +92,7 @@ const CourseModal = ({ open, setOpen }) => {
                             },
                         ]}
                     >
-                        <Input id='title' />
+                        <Input id='title' placeholder='Kurs nomi'/>
                     </Form.Item>
 
                     <label htmlFor="description">Kurs haqida</label>
@@ -72,7 +105,7 @@ const CourseModal = ({ open, setOpen }) => {
                             },
                         ]}
                     >
-                        <TextArea rows={4} id='description' />
+                        <TextArea rows={4} id='description' placeholder='Kurs haqida'/>
                     </Form.Item>
 
 
@@ -82,7 +115,7 @@ const CourseModal = ({ open, setOpen }) => {
                             span: 5,
                         }}
                     >
-                        <Button type="primary" htmlType="submit" className='text-white bg-sky-600 block w-fit rounded-md cursor-pointer p-1'>
+                        <Button type="primary" htmlType="submit" className='text-white bg-sky-600 block w-fit rounded-md cursor-pointer py-1 px-2'>
                             <PlusModal />
                         </Button>
                     </Form.Item>
