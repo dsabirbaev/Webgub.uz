@@ -11,7 +11,7 @@ import "./style.scss";
 const index = () => {
     const [sidebar, setSidebar] = useState(false);
     const navigate = useNavigate();
-    document.title = "Dashboard | Admin"
+    document.title = "Admin | Dashboard"
 
     const logout = () => {
         localStorage.clear();

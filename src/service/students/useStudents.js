@@ -12,12 +12,7 @@ const headers =  {
 
 const useStudents = {
     getStudents: () => api.get('/student', {headers}),
-    updateStatus: (id, data) => {
-        console.log(typeof id)
-        console.log(data)
-
-        return api.put(`/student/update-status?id=${id}`, data, {headers})
-    },
+    updateStatus: (id, data) => api.put(`/student/update-status/${id}`, data, {headers}),
     userRegistration: (data) => api.post(`/student/register`, data, {headers}),
 }
 

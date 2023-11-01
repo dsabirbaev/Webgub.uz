@@ -24,8 +24,8 @@ const CourseModal = ({ open, setOpen, id }) => {
         
 
         const info = { id: id, status: Number(values.status) };
+    
         console.log(info)
-
         useStudents.updateStatus(id, info).then(((res) => {
             console.log("Response:", res);
         })).catch((er) => {
