@@ -10,9 +10,7 @@ import { Modal, Form, Button, Select, message } from 'antd';
 import { PlusModal } from "../../Icons";
 
 
-const CourseModal = ({ open, setOpen, id }) => {
-
-    
+const CourseModal = ({ open, setOpen, id, userName }) => {
 
     const handleOpen = () => setOpen(!open);
 
@@ -21,15 +19,17 @@ const CourseModal = ({ open, setOpen, id }) => {
     };
 
     const onFinish = (values) => {
-        
-
         const info = { id: id, status: Number(values.status) };
-    
-        console.log(info)
+       
         useStudents.updateStatus(id, info).then(((res) => {
-            console.log("Response:", res);
+           
+            if(res.status === 200){
+                message.success(`${userName} ${info.status === 2 ? "o\'qiydi" : "o\'qimaydi"}`);
+                handleOpen();
+            }
+            
         })).catch((er) => {
-            console.log(er)
+            message.success("Xatolik yuz berd!");
         })
     }
 

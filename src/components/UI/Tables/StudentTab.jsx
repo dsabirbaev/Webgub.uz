@@ -1,14 +1,15 @@
 
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { StudentModal } from "../../UI/Modals";
 import { Table } from 'antd';
-import { Pencil, Check, DoubleCheck } from "../../Icons";
+import { Pencil, Check, DoubleCheck, Stop } from "../../Icons";
 
 const StudentTab = ({ student }) => {
     
     const [open, setOpen] = useState(false);
     const [idUser, setIdUser] = useState(null);
+    const [userName, setUserName] = useState("");
     const columns = [
         {
             title: '#',
@@ -48,9 +49,10 @@ const StudentTab = ({ student }) => {
 
     ];
 
-    const openModal = (id) => {
+    const openModal = (id, nameUser) => {
         setOpen(!open)
         setIdUser(id)
+        setUserName(nameUser)
     }
 
    
@@ -65,15 +67,15 @@ const StudentTab = ({ student }) => {
             telefon: item?.phoneNumber,
             kurs: item?.courseId?.title,
             royxatVaqti: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`,
-            holat: <span className={`p-1 w-fit block ${ item?.status == 2 ? "bg-green-500 text-white" : "bg-yellow-500"}  rounded-md`}>{item?.status == 2 ? <DoubleCheck/> : <Check /> } </span>,
-            tahrirlash: <span onClick={() => openModal(item?.id)}  className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
+            holat: <span className={`p-1 w-fit block ${ item?.status == 2 ? "bg-green-500 text-white" : item?.status == 3 ? "bg-red-500 text-white" : "bg-yellow-500"}  rounded-md`}>{item?.status === 2 ? <DoubleCheck/> : item?.status === 3 ? <Stop/> : <Check /> } </span>,
+            tahrirlash: <span onClick={() => openModal(item?.id, item?.fullName)}  className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
         }
     });
 
    
     return (
         <>
-                <StudentModal open={open} setOpen={setOpen} id={idUser}/>
+                <StudentModal open={open} setOpen={setOpen} id={idUser} userName={userName}/>
                 <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
         </>
         
