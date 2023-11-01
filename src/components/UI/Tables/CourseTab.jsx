@@ -1,9 +1,11 @@
-
+import { useState } from 'react';
 import { Table } from 'antd';
+import { EditCourse } from '../Modals';
 import { Pencil } from "../../Icons";
 
 const CourseTab = ({ course }) => {
-    
+    const [open, setOpen] = useState(false);
+    const [idCourse, setIdCourse] = useState("");
     const columns = [
         {
             title: '#',
@@ -38,6 +40,11 @@ const CourseTab = ({ course }) => {
 
     ];
 
+    const getId = (id) => {
+        setOpen(!open)
+        setIdCourse(id)
+    }
+  
 
     const data = course?.map((item, index) => {
         const date = new Date(item?.createdAt);
@@ -49,12 +56,13 @@ const CourseTab = ({ course }) => {
             kursNomi: item?.title,
             talabalarSoni: item?.students.length,
             yarVaqti: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}    ${date.getHours()}:${date.getMinutes()}`,
-            tahrirlash: <span className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
+            tahrirlash: <span onClick={() => getId(item?.id)} className='p-1 w-fit block bg-yellow-500 rounded-md text-white cursor-pointer'> <Pencil /> </span>
         }
     });
 
     return (
         <>
+            <EditCourse  open={open} setOpen={setOpen} idCourse={idCourse}/>
             <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
         </>
 

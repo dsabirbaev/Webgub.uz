@@ -20,6 +20,13 @@ const useCourses = {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
     }),
+    getOneCourse: (id) => api.get(`/course/${id}`, {headers}),
+    updateCourse: (id, data) => api.put(`/course/${id}`, data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+    }),
 }
 
 export default useCourses;

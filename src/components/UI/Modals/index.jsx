@@ -7,4 +7,5 @@ import StudentModal from "./StudentModal"
 import UserCourseModal from "./UserCourseModal";
 import UserServiceModal from "./UserServiceModal";
 import EditService from "./EditService";
-export {CourseModal, StudentModal, UserCourseModal, UserServiceModal, ServiceModal, EditService};
+import EditCourse from "./EditCourse";
+export {CourseModal, StudentModal, UserCourseModal, UserServiceModal, ServiceModal, EditService, EditCourse};
