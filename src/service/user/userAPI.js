@@ -10,7 +10,7 @@ const headers =  {
 const userAPI = {
     login: (data) => api.post('/admin/login', data),
     getMe: () => api.get('/admin/get-my-data', {headers}),
-    update: (data) => api.get('/admin/update', data, {headers}),
+    update: (data) => api.put('/admin/update', data, {headers}),
 }
 
 export default userAPI;
