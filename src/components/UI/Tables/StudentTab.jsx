@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StudentModal } from "../../UI/Modals";
 import { Table } from 'antd';
 import { Pencil, Check, DoubleCheck, Stop } from "../../Icons";
-
+import useStudents from '../../../service/students/useStudents';
 const StudentTab = ({ student, getAllStudents }) => {
     
     const [open, setOpen] = useState(false);
@@ -56,6 +56,7 @@ const StudentTab = ({ student, getAllStudents }) => {
     }
 
    
+   
     const data = student?.map((item, index) => {
         const date = new Date(item?.createdAt);
        
@@ -76,7 +77,7 @@ const StudentTab = ({ student, getAllStudents }) => {
     return (
         <>
                 <StudentModal open={open} setOpen={setOpen} id={idUser} userName={userName} getAllStudents={getAllStudents}/>
-                <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+                <Table columns={columns} dataSource={data} pagination={{ defaultPageSize: 10, position: ["bottomLeft"]}}/>
         </>
         
     )

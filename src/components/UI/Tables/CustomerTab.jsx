@@ -53,7 +53,7 @@ const StudentTab = ({ customer }) => {
 
     return (
 
-        <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+        <Table  columns={columns} dataSource={data} pagination={{ position: ["none"] }} />
     )
 }
 

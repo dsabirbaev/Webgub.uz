@@ -63,7 +63,7 @@ const ServiceTab = ({ service }) => {
     return (
         <>
              <EditService  open={open} setOpen={setOpen} idService={idService}/>
-             <Table  columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+             <Table  columns={columns} dataSource={data} pagination={{ position: ["none"] }} />
         </>
         
     )

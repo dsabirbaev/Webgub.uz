@@ -63,7 +63,7 @@ const CourseTab = ({ course }) => {
     return (
         <>
             <EditCourse  open={open} setOpen={setOpen} idCourse={idCourse}/>
-            <Table columns={columns} dataSource={data} pagination={{ position: ["bottomLeft"] }} />
+            <Table columns={columns} dataSource={data} pagination={{ position: ["none"] }} />
         </>
 
     )
