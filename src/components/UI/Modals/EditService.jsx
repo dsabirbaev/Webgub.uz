@@ -18,13 +18,13 @@ const EditService = ({ open, setOpen, idService}) => {
     const onFinish = (values) => {
        
         const service = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
-        console.log(service)
+    
 
         useServices.updateService(idService, service).then((res) => {
             console.log(res)
             if(res.status === 200){
                 message.success("Xizmat muvaffaqqiyatli tahrirlandi!");
-                // handleOpen();
+                handleOpen();
             }
         }).catch((err) => {
             console.log(err)

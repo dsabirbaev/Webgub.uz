@@ -13,14 +13,12 @@ const CourseModal = ({ open, setOpen }) => {
     const handleOpen = () => setOpen(!open);
 
     const onFinish = (values) => {
-        // console.log(values)
+      
         const course = { fullName: values.fullName, phoneNumber: values.phoneNumber, courseId: values.courseId };
-
 
         if (course.fullName.trim().length && course.phoneNumber.trim().length && course.courseId.trim().length) {
 
             useStudents.userRegistration(course).then((res) => {
-                console.log(res)
 
                 if(res.status === 201){
                     message.success("Siz kurska yozildingiz!");

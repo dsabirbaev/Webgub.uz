@@ -13,16 +13,12 @@ const CourseModal = ({ open, setOpen }) => {
     const handleOpen = () => setOpen(!open);
 
     const onFinish = (values) => {
-        // console.log(values)
+  
         const service = { fullName: values.fullName, phoneNumber: values.phoneNumber, serviceId: values.serviceId };
-
-        console.log(service)
-
         if (service.fullName.trim().length && service.phoneNumber.trim().length && service.serviceId.trim().length) {
 
             useServices.userRegistration(service).then((res) => {
                
-
                 if(res.status === 201){
                     message.success("Siz xizmatga yozildingiz!");
                     handleOpen();

@@ -22,16 +22,16 @@ const EditCourse = ({ open, setOpen, idCourse}) => {
         const course = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
         console.log(course)
 
-        // useCourses.updateCourse(idCourse, course).then((res) => {
-        //     console.log(res)
-        //     if(res.status === 200){
-        //         message.success("Xizmat muvaffaqqiyatli tahrirlandi!");
-        //         // handleOpen();
-        //     }
-        // }).catch((err) => {
-        //     console.log(err)
-        //     message.success("Xatolik yuz berd!");
-        // })
+        useCourses.updateCourse(idCourse, course).then((res) => {
+            console.log(res)
+            if(res.status === 200){
+                message.success("Xizmat muvaffaqqiyatli tahrirlandi!");
+                handleOpen();
+            }
+        }).catch((err) => {
+            console.log(err)
+            message.success("Xatolik yuz berd!");
+        })
 
     }
     const onFinishFailed = (errorInfo) => {
