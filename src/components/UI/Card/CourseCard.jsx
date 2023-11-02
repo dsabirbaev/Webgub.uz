@@ -13,7 +13,7 @@ const CourseCard = ({ state: { title, description, image } }) => {
 
             <UserCourseModal open={open} setOpen={setOpen} />
             
-            <img src={image} alt={title} className="h-[323px] object-cover w-full" />
+            <img src={image} alt={title} className="h-[323px] object-fit w-full" />
 
             <div className="p-[33px] font-['SairaSemiBold'] bg-white">
                 <div className="flex items-center justify-between text-[#4E596B] text-[14px] tracking-[-0.42px] mb-5">
