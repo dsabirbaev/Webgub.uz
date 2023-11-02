@@ -37,7 +37,7 @@ const index = () => {
                         <div>
                             <h2 className="mb-[52px] text-[#1D1D45] w-[775px] text-[45px] leading-[60px] font-['RowdiesBold']">The number one factor in <span className="text-[#2AAA94]">relevance drives out resistance.</span></h2>
                             <p className="text-[#4E596B] font-['SairaRegular'] leading-[28px] w-[754px] text-[18px] mb-[48px]">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <button className="btn-factor py-[16px] px-[30px] rounded-[10px] text-white">Learn More</button>
+                            <button className="btn-factor py-[16px] px-[30px] rounded-[10px] text-white hover:ring hover:ring-indigo-400">Learn More</button>
                         </div>
                     </div>
 

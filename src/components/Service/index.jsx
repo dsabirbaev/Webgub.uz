@@ -29,16 +29,15 @@ const index = () => {
                     <h2 className="text-[#2AAA94] font-['RowdiesBold'] text-[45px] mb-[42px] text-center">Services</h2>
                     <h4 className="text-[#4E596B] text-[25px] font-['InterMedium'] text-center mb-5">What our student say about us</h4>
                    
-                    <div className="flex justify-between gap-x-[67px]">
+                    <div className="grid grid-cols-3 gap-[67px]">
 
                         {
                             service?.map((item) => {
                                 return <ServiceCard state={item} key={item?.id}/>
                             })
                         }
-                        {/* <ServiceCard/>
-                        <ServiceCard/>
-                        <ServiceCard/> */}
+                       
+                        
                     </div>
                 </div>
             </div>
