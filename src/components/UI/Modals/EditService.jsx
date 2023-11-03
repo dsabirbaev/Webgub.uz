@@ -17,9 +17,10 @@ const EditService = ({ open, setOpen, idService}) => {
    
     const onFinish = (values) => {
        
-        const service = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
-    
-
+        const service = {course: values.course, description: values.description, image: values.image.fileList[0].originFileObj};
+        
+        console.log(service)
+        console.log(idService)
         useServices.updateService(idService, service).then((res) => {
             console.log(res)
             if(res.status === 200){
@@ -41,18 +42,18 @@ const EditService = ({ open, setOpen, idService}) => {
     };
    
    
-    const getService = () => {
-        useServices.getOneService(idService).then((res) => {
+    // const getService = () => {
+    //     useServices.getOneService(idService).then((res) => {
         
-            setInfo(res?.data?.service)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
+    //         setInfo(res?.data?.service)
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
     
-    useEffect(() => {
-        getService();    
-    }, [idService]);
+    // useEffect(() => {
+    //     getService();    
+    // }, [idService]);
   
     return (
         <>
@@ -68,20 +69,20 @@ const EditService = ({ open, setOpen, idService}) => {
                     initialValues={{
                         remember: true,
                     }}
-                    fields={[
-                        {
-                            name: ["image"],
-                            value: info?.image,
-                        },
-                        {
-                            name: ["title"],
-                            value: info?.title,
-                        },
-                        {
-                            name: ["description"],
-                            value: info?.description,
-                        }
-                    ]}
+                    // fields={[
+                    //     {
+                    //         name: ["image"],
+                    //         value: info?.image,
+                    //     },
+                    //     {
+                    //         name: ["title"],
+                    //         value: info?.title,
+                    //     },
+                    //     {
+                    //         name: ["description"],
+                    //         value: info?.description,
+                    //     }
+                    // ]}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
@@ -102,9 +103,9 @@ const EditService = ({ open, setOpen, idService}) => {
                         </Upload>
                     </Form.Item>
 
-                    <label htmlFor="title">Xizmat nomi</label>
+                    <label htmlFor="course">Xizmat nomi</label>
                     <Form.Item
-                        name="title"
+                        name="course"
                         rules={[
                             {
                                 required: true,
@@ -112,7 +113,7 @@ const EditService = ({ open, setOpen, idService}) => {
                             },
                         ]}
                     >
-                        <Input id='title' placeholder='Xizmat nomi'/>
+                        <Input id='course' placeholder='Xizmat nomi'/>
                     </Form.Item>
 
                     <label htmlFor="description">Xizmat haqida</label>

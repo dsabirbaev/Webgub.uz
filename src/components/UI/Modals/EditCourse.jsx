@@ -20,10 +20,10 @@ const EditCourse = ({ open, setOpen, idCourse}) => {
     const onFinish = (values) => {
        
         const course = {title: values.title, description: values.description, image: values.image.fileList[0].originFileObj};
-        console.log(course)
+        // console.log(course)
 
         useCourses.updateCourse(idCourse, course).then((res) => {
-            console.log(res)
+            // console.log(res)
             if(res.status === 200){
                 message.success("Xizmat muvaffaqqiyatli tahrirlandi!");
                 handleOpen();
@@ -43,18 +43,18 @@ const EditCourse = ({ open, setOpen, idCourse}) => {
     };
    
    
-    const getCourse = () => {
-        useCourses.getOneCourse(idCourse).then((res) => {
+    // const getCourse = () => {
+    //     useCourses.getOneCourse(idCourse).then((res) => {
         
-            setInfo(res?.data?.course)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
+    //         setInfo(res?.data?.course)
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
     
-    useEffect(() => {
-        getCourse();    
-    }, [idCourse]);
+    // useEffect(() => {
+    //     getCourse();    
+    // }, [idCourse]);
   
     return (
         <>
@@ -70,20 +70,20 @@ const EditCourse = ({ open, setOpen, idCourse}) => {
                     initialValues={{
                         remember: true,
                     }}
-                    fields={[
-                        {
-                            name: ["image"],
-                            value: info?.image,
-                        },
-                        {
-                            name: ["title"],
-                            value: info?.title,
-                        },
-                        {
-                            name: ["description"],
-                            value: info?.description,
-                        }
-                    ]}
+                    // fields={[
+                    //     {
+                    //         name: ["image"],
+                    //         value: info?.image,
+                    //     },
+                    //     {
+                    //         name: ["title"],
+                    //         value: info?.title,
+                    //     },
+                    //     {
+                    //         name: ["description"],
+                    //         value: info?.description,
+                    //     }
+                    // ]}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
